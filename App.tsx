@@ -19,14 +19,17 @@ const App: React.FC = () => {
   const [developerContactName, setDeveloperContactName] = useState('');
   const [formData, setFormData] = useState({
     name: '',
-    schedule: '',
+    scheduleDay: '',
+    schedulePeriod: 'Manhã',
     experience: 'Sim',
-    details: '', // For Age and Weight
+    age: '',
+    weight: '',
     payment: 'Pix',
   });
   const [contactFormData, setContactFormData] = useState({
     name: '',
-    schedule: '',
+    scheduleDay: '',
+    schedulePeriod: 'Manhã',
     message: '',
   });
 
@@ -45,9 +48,11 @@ const App: React.FC = () => {
     setIsConfirmationModalOpen(false);
     setFormData({
         name: '',
-        schedule: '',
+        scheduleDay: '',
+        schedulePeriod: 'Manhã',
         experience: 'Sim',
-        details: '',
+        age: '',
+        weight: '',
         payment: 'Pix',
     });
   };
@@ -64,9 +69,11 @@ const App: React.FC = () => {
 
 *Minhas Informações:*
 - Nome: ${data.name}
-- Melhor horário (período/dia): ${data.schedule}
+- Melhor dia: ${data.scheduleDay || 'A combinar'}
+- Melhor período: ${data.schedulePeriod}
 - Já treinou antes?: ${data.experience}
-- Idade e Peso: ${data.details}
+- Idade: ${data.age || 'Não informado'}
+- Peso: ${data.weight ? `${data.weight} kg` : 'Não informado'}
 - Forma de Pagamento: ${data.payment}
 
 Aguardo seu retorno!`;
@@ -92,10 +99,10 @@ Aguardo seu retorno!`;
   
   const handleCloseContactModal = () => {
     setIsContactModalOpen(false);
-    setContactFormData({ name: '', schedule: '', message: '' });
+    setContactFormData({ name: '', scheduleDay: '', schedulePeriod: 'Manhã', message: '' });
   };
 
-  const handleContactFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleContactFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setContactFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -105,7 +112,8 @@ Aguardo seu retorno!`;
         const message = `Olá, Syrlean! Gostaria de entrar em contato.
 
 - Nome: ${contactFormData.name}
-- Melhor horário para contato: ${contactFormData.schedule}
+- Melhor dia para contato: ${contactFormData.scheduleDay || 'A combinar'}
+- Melhor período para contato: ${contactFormData.schedulePeriod}
 - Mensagem: ${contactFormData.message}
 
 Aguardo seu retorno!`;
@@ -161,13 +169,29 @@ Aguardo seu retorno!`;
                   <label htmlFor="name" className={labelStyle}>Seu Nome Completo*</label>
                   <input type="text" name="name" id="name" value={formData.name} onChange={handleFormChange} className={inputStyle} required placeholder="Seu nome" />
                 </div>
-                <div>
-                  <label htmlFor="schedule" className={labelStyle}>Melhor horário (período/dia)</label>
-                  <input type="text" name="schedule" id="schedule" value={formData.schedule} onChange={handleFormChange} className={inputStyle} placeholder="Ex: Manhã, Terça-feira" />
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="scheduleDay" className={labelStyle}>Melhor dia</label>
+                    <input type="text" name="scheduleDay" id="scheduleDay" value={formData.scheduleDay} onChange={handleFormChange} className={inputStyle} placeholder="Ex: Terça-feira" />
+                  </div>
+                  <div>
+                    <label htmlFor="schedulePeriod" className={labelStyle}>Melhor período</label>
+                    <select name="schedulePeriod" id="schedulePeriod" value={formData.schedulePeriod} onChange={handleFormChange} className={inputStyle}>
+                      <option>Manhã</option>
+                      <option>Tarde</option>
+                      <option>Noite</option>
+                    </select>
+                  </div>
                 </div>
-                <div>
-                  <label htmlFor="details" className={labelStyle}>Idade e Peso</label>
-                  <input type="text" name="details" id="details" value={formData.details} onChange={handleFormChange} className={inputStyle} placeholder="Ex: 25 anos, 70kg" />
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="age" className={labelStyle}>Idade</label>
+                    <input type="number" name="age" id="age" value={formData.age} onChange={handleFormChange} className={inputStyle} placeholder="Ex: 25" />
+                  </div>
+                  <div>
+                    <label htmlFor="weight" className={labelStyle}>Peso (kg)</label>
+                    <input type="number" name="weight" id="weight" value={formData.weight} onChange={handleFormChange} className={inputStyle} placeholder="Ex: 70" />
+                  </div>
                 </div>
                  <div>
                   <label htmlFor="experience" className={labelStyle}>Já treinou antes?</label>
@@ -246,9 +270,19 @@ Aguardo seu retorno!`;
                 <label htmlFor="contact-name" className={labelStyle}>Seu Nome Completo*</label>
                 <input type="text" name="name" id="contact-name" value={contactFormData.name} onChange={handleContactFormChange} className={inputStyle} required placeholder="Seu nome" />
               </div>
-              <div>
-                <label htmlFor="contact-schedule" className={labelStyle}>Melhor horário para contato</label>
-                <input type="text" name="schedule" id="contact-schedule" value={contactFormData.schedule} onChange={handleContactFormChange} className={inputStyle} placeholder="Ex: Manhã, Terça-feira" />
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="contact-scheduleDay" className={labelStyle}>Melhor dia</label>
+                  <input type="text" name="scheduleDay" id="contact-scheduleDay" value={contactFormData.scheduleDay} onChange={handleContactFormChange} className={inputStyle} placeholder="Ex: Terça-feira" />
+                </div>
+                <div>
+                  <label htmlFor="contact-schedulePeriod" className={labelStyle}>Melhor período</label>
+                  <select name="schedulePeriod" id="contact-schedulePeriod" value={contactFormData.schedulePeriod} onChange={handleContactFormChange} className={inputStyle}>
+                    <option>Manhã</option>
+                    <option>Tarde</option>
+                    <option>Noite</option>
+                  </select>
+                </div>
               </div>
               <div>
                 <label htmlFor="contact-message" className={labelStyle}>Mensagem (opcional)</label>
