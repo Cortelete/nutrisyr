@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Syrlean Biedermann - Nutrição</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom animated gradient background for the body */
+      @keyframes gradient-bg-animation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .animated-bg {
+        background-size: 400% 400%;
+        animation: gradient-bg-animation 15s ease infinite;
+      }
+      .dark .animated-bg {
+        background-image: linear-gradient(-45deg, #0d1117, #171b24, #0f172a, #1e293b);
+      }
+
+      /* Custom animated gradient for text with shimmer effect */
+      @keyframes gradient-text-animation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .animated-gradient-text {
+        background-size: 200% auto;
+        animation: gradient-text-animation 3s linear infinite;
+      }
+      
+      /* Custom glow effect for buttons */
+      .glow-on-hover {
+        transition: box-shadow 0.3s ease-in-out;
+      }
+      .glow-on-hover:hover {
+        box-shadow: 0 0 15px 5px rgba(249, 115, 22, 0.4);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
