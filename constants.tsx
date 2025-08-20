@@ -13,13 +13,13 @@ export const SERVICES: Service[] = [
   {
     id: 'presencial',
     title: 'Consulta Presencial',
-    price: 160,
+    price: 180,
     description: 'Atendimento completo em consultório, com avaliação física detalhada e plano alimentar personalizado.'
   },
   {
     id: 'domicilio',
     title: 'Consulta em Domicílio',
-    price: 160,
+    price: 200,
     description: 'A mesma qualidade do atendimento presencial, no conforto da sua casa. Ideal para quem tem uma rotina agitada.'
   },
   {

@@ -128,11 +128,14 @@ Aguardo seu retorno!`;
 
   return (
     <div className="min-h-screen font-sans dark">
-      <div className="relative isolate px-6 pt-6 lg:px-8">
+      <div className="relative isolate px-4 sm:px-6 pt-6 lg:px-8">
         <Header />
-        <main className="mx-auto max-w-4xl py-16 sm:py-24">
+        <main className="mx-auto max-w-4xl py-12 sm:py-20">
           <Hero onBioClick={() => setIsBioModalOpen(true)} onScheduleClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })} />
           <SocialLinks onWhatsAppClick={() => setIsContactModalOpen(true)} onYouTubeClick={() => setIsComingSoonModalOpen(true)} />
+          <p className="mt-8 text-center text-xs sm:text-base leading-7 sm:leading-8 text-slate-400 max-w-2xl mx-auto">
+            Transforme sua saúde e performance com um acompanhamento nutricional personalizado e humano.
+          </p>
           <ServicesSection onScheduleClick={handleOpenConfirmationModal} />
         </main>
         <Footer onCTAClick={() => setIsDeveloperModalOpen(true)} />

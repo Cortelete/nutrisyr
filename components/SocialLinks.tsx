@@ -28,7 +28,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ onWhatsAppClick, onYouTubeCli
   };
 
   return (
-    <div className="mt-16 flow-root">
+    <div className="mt-12 sm:mt-16 flow-root">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {socialLinks.map((item) => (
           <a
