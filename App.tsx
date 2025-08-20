@@ -130,7 +130,11 @@ Aguardo seu retorno!`;
   return (
     <div className="min-h-screen font-sans dark">
       <div className="relative isolate px-4 sm:px-6 pt-6 lg:px-8">
-        <Header />
+        <Header 
+          onBioClick={() => setIsBioModalOpen(true)}
+          onReviewsClick={() => setIsComingSoonModalOpen(true)}
+          onContactClick={() => setIsContactModalOpen(true)}
+        />
         <main className="mx-auto max-w-4xl py-12 sm:py-20">
           <Hero onBioClick={() => setIsBioModalOpen(true)} onScheduleClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })} />
           <SocialLinks onWhatsAppClick={() => setIsContactModalOpen(true)} onYouTubeClick={() => setIsComingSoonModalOpen(true)} />
