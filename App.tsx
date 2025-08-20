@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect, useCallback } from 'react';
 import type { Service } from './types';
 import Header from './components/Header';
@@ -89,7 +90,7 @@ Aguardo seu retorno!`;
   };
 
   const handleDeveloperWhatsAppRedirect = () => {
-    const clientName = "Syrlean Biedermann";
+    const clientName = "Biedermann Nutricionista";
     const userName = developerContactName || 'um visitante';
     const message = `Olá, vi o link de ${clientName} e quero um site igual! Meu nome é ${userName}. 🚀`;
     window.open(`https://wa.me/${DEVELOPER_WHATSAPP}?text=${encodeURIComponent(message)}`, '_blank');
@@ -145,8 +146,13 @@ Aguardo seu retorno!`;
       <Modal isOpen={isBioModalOpen} onClose={() => setIsBioModalOpen(false)}>
         <div className="text-center">
           <img src="/profile.png" alt="Syrlean Biedermann" className="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-orange-500" />
-          <h3 className="text-xl sm:text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-rose-400 animated-gradient-text">
-            Syrlean Biedermann
+          <h3 className="text-xl sm:text-2xl font-bold mb-2">
+            <div className="flex justify-center items-center gap-x-2">
+              <img src="/logo.png" alt="Biedermann Nutricionista Logo" className="h-6 w-auto sm:h-8" />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-rose-400 animated-gradient-text">
+                Biedermann Nutricionista
+              </span>
+            </div>
           </h3>
           <p className="text-sm uppercase tracking-wider font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-rose-400 animated-gradient-text">Nutrição Esportiva</p>
           <div className="text-left space-y-3 text-slate-400 text-sm sm:text-base">
